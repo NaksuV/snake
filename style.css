@@ -1,0 +1,29 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+#board { 
+    border: 2px solid black;
+    
+}
+
+.row{
+    display: flex;
+
+}
+
+.col{
+    width: 30px;
+    height: 30px;
+    border: 1px solid rgba(211, 206, 206, 0.869);
+}
