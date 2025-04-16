@@ -25,5 +25,6 @@ body {
 .col{
     width: 30px;
     height: 30px;
-    border: 1px solid rgba(211, 206, 206, 0.869);
+    border: 1px solid rgba(228, 225, 225, 0.824);
+    border-radius: 4px;
 }
