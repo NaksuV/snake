@@ -1,8 +1,10 @@
 let direction = "right"
 let snake = [[1, 1], [1, 2], [1, 3]]
-let speed = 5000
-let board_width = 5
-let board_height = 3
+let speed = 500
+let board_width = 30
+let board_height = 15
+let mouse_col
+let mouse_generation_delay = 2000
 
 creat_board()
 initial_snake_render()
@@ -37,8 +39,6 @@ function paint_column(col, color) {
     col_element.style.backgroundColor = color
 }
 function move_snake() {
-    let tail = snake.shift()
-    paint_column(tail, "white")
 
     let head = snake[snake.length - 1]
     let new_head
@@ -73,6 +73,16 @@ function move_snake() {
 
     snake.push(new_head)
     paint_column(new_head, "black")
+
+    if (mouse_col && mouse_col[0] === new_head[0] && mouse_col[1] === new_head[1]) {
+        mouse_col = null
+        setTimeout(create_mouse, mouse_generation_delay);
+    }else{
+        let tail = snake.shift()
+        paint_column(tail, "white")
+
+    }
+
 }
 function on_keydown(event) {
     if (event.key === "ArrowUp") {
@@ -89,7 +99,8 @@ function on_keydown(event) {
 function create_mouse() {
     let random_width = Math.floor(Math.random() * (board_width - 1));
     let random_height = Math.floor(Math.random() * (board_height - 1));
-    let mouse_col = [random_height, random_width]
+
+    mouse_col = [random_height, random_width]
 
     for (i = 0; i < snake.length; i++) {
         if (snake[i][0] === mouse_col[0] && snake[i][1] === mouse_col[1]) {
