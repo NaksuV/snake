@@ -1,13 +1,15 @@
 let direction = "right"
-let snake = [[9, 4], [9, 5], [9, 6]]
-let speed = 500
-let board_width = 30
-let board_height = 15
+let snake = [[1, 1], [1, 2], [1, 3]]
+let speed = 5000
+let board_width = 5
+let board_height = 3
 
 creat_board()
 initial_snake_render()
 setInterval(move_snake, speed);
+create_mouse()
 document.addEventListener("keydown", on_keydown)
+
 
 function creat_board() {
     for (let r = 0; r < board_height; r++) {
@@ -56,16 +58,16 @@ function move_snake() {
     }
     else if (direction === "up") {
         if (head[0] === 0) {
-            new_head = [board_height - 1, head[1]]    
-        }else{
-        new_head = [head[0] - 1, head[1]]
+            new_head = [board_height - 1, head[1]]
+        } else {
+            new_head = [head[0] - 1, head[1]]
         }
     }
     else if (direction === "down") {
-        if (head [0] === board_height - 1) {
-            new_head = [0 , head[1]]
-        }else{
-        new_head = [head[0] + 1, head[1]]
+        if (head[0] === board_height - 1) {
+            new_head = [0, head[1]]
+        } else {
+            new_head = [head[0] + 1, head[1]]
         }
     }
 
@@ -82,4 +84,19 @@ function on_keydown(event) {
     } else if (event.key === "ArrowLeft") {
         direction = "left"
     }
+}
+
+function create_mouse() {
+    let random_width = Math.floor(Math.random() * (board_width - 1));
+    let random_height = Math.floor(Math.random() * (board_height - 1));
+    let mouse_col = [random_height, random_width]
+
+    for (i = 0; i < snake.length; i++) {
+        if (snake[i][0] === mouse_col[0] && snake[i][1] === mouse_col[1]) {
+            create_mouse()
+            return
+        }
+    }
+
+    paint_column(mouse_col, "gray")
 }
