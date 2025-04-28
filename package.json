@@ -1,0 +1,23 @@
+{
+  "name": "snake",
+  "version": "1.0.0",
+  "main": "main.js",
+  "scripts": {
+    "start": "npx http-server -o",
+    "prettier": "prettier --write ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NaksuV/snake.git"
+  },
+  "author": "NaksuV",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/NaksuV/snake/issues"
+  },
+  "homepage": "https://github.com/NaksuV/snake#readme",
+  "description": "",
+  "devDependencies": {
+    "prettier": "^3.5.3"
+  }
+}
