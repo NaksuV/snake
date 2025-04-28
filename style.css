@@ -6,6 +6,7 @@
 
 body {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100vw;
@@ -27,4 +28,12 @@ body {
     height: 30px;
     border: 1px solid rgba(228, 225, 225, 0.824);
     border-radius: 4px;
+}
+
+#score{   
+        width: 100%;
+        font-size: 24px;
+        font-weight: bold;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        margin-bottom: 20px;
 }

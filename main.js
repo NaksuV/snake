@@ -5,6 +5,7 @@ let board_width = 30
 let board_height = 15
 let mouse_col
 let mouse_generation_delay = 2000
+let score = 0
 
 creat_board()
 initial_snake_render()
@@ -77,10 +78,11 @@ function move_snake() {
     if (mouse_col && mouse_col[0] === new_head[0] && mouse_col[1] === new_head[1]) {
         mouse_col = null
         setTimeout(create_mouse, mouse_generation_delay);
-    }else{
+        score = score + 1
+        document.getElementById("score").innerText = "score: " + score.toString().padStart(3,"0")
+    } else {
         let tail = snake.shift()
         paint_column(tail, "white")
-
     }
 
 }
