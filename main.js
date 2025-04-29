@@ -10,14 +10,15 @@ let board_height = 15;
 let mouse_col;
 let mouse_generation_delay = 2000;
 let score = 0;
+let last_moved_direction = direction;
 
-creat_board();
+create_board();
 initial_snake_render();
 setInterval(move_snake, speed);
 create_mouse();
 document.addEventListener("keydown", on_keydown);
 
-function creat_board() {
+function create_board() {
   for (let r = 0; r < board_height; r++) {
     let row = document.createElement("div");
     row.className = "row";
@@ -90,16 +91,26 @@ function move_snake() {
     let tail = snake.shift();
     paint_column(tail, "white");
   }
+
+  last_moved_direction = direction;
 }
 function on_keydown(event) {
   if (event.key === "ArrowUp") {
-    direction = "up";
+    if (last_moved_direction !== "down") {
+      direction = "up";
+    }
   } else if (event.key === "ArrowDown") {
-    direction = "down";
+    if (last_moved_direction !== "up") {
+      direction = "down";
+    }
   } else if (event.key === "ArrowRight") {
-    direction = "right";
+    if (last_moved_direction !== "left") {
+      direction = "right";
+    }
   } else if (event.key === "ArrowLeft") {
-    direction = "left";
+    if (last_moved_direction !== "right") {
+      direction = "left";
+    }
   }
 }
 
